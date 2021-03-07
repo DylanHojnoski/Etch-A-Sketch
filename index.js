@@ -26,6 +26,7 @@ function createGrid(width, height)
             }
         });
         div.addEventListener("click", () => {
+            div.style.backgroundColor = selectedColor;
            if(active)
            {
                active = false;
