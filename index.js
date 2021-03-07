@@ -8,6 +8,7 @@ let root = document.querySelector(":root");
 const body = document.querySelector("body");
 body.addEventListener("load" , createGrid(width, height));
 body.addEventListener("load" , colors());
+body.addEventListener("load" , addClearGridButton());
 const container = document.getElementById("container");
 
 function createGrid(width, height)
@@ -40,12 +41,12 @@ function createGrid(width, height)
     }
 }
 
-const clear = document.querySelector("button");
+/*const clear = document.querySelector("button");
 clear.addEventListener("click", () => {
     clearGrid();
     gridSize();
     createGrid(width, height);
-});
+}); */
 
 function clearGrid() 
 {
@@ -74,7 +75,7 @@ function colors()
     let colors = ["black", "white", "red", "blue", "green", "yellow", "orange"];
     for(let i = 0; i < colors.length; i++)
     {
-        const body = document.querySelector("body");
+        const buttonHolder = document.getElementById("buttonHolder");
         const colorSelect = document.createElement("button");
         colorSelect.style.backgroundColor = colors[i];
         colorSelect.style.borderRadius = "50%";
@@ -84,8 +85,21 @@ function colors()
             selectedColor = colors[i];
             root.style.setProperty("--hoverColor", colors[i]);
         });
-        body.append(colorSelect);
+        buttonHolder.append(colorSelect);
     }
+}
+
+function addClearGridButton()
+{
+    const buttonHolder = document.getElementById("buttonHolder");
+    const clearButton = document.createElement("button");
+    clearButton.textContent = "Clear Grid";
+    clearButton.addEventListener("click", () => {
+        clearGrid();
+        gridSize();
+        createGrid(width, height);
+    });
+    buttonHolder.append(clearButton);
 }
 
  
