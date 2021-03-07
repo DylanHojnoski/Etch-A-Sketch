@@ -1,8 +1,8 @@
 let width = 16;
 let height = 16;
 let active =false;
-let selectedColor = "black"
-let currentColor;
+let selectedColor;
+let divColor;
 let root = document.querySelector(":root");
 
 const body = document.querySelector("body");
@@ -22,11 +22,17 @@ function createGrid(width, height)
         div.addEventListener("mouseover", () => {
             if(active)
             {
-                div.style.backgroundColor = selectedColor;
+                div.style.backgroundColor = selectedColor.style.backgroundColor;
             }
+            div.style.outline = "4px solid #7c7b7b";
+            div.style.zIndex = "5";
+        });
+        div.addEventListener("mouseleave", () => {
+            div.style.outline = "1px solid #7c7b7b13";
+            div.style.zIndex = "0";
         });
         div.addEventListener("click", () => {
-            div.style.backgroundColor = selectedColor;
+            div.style.backgroundColor = selectedColor.style.backgroundColor;
            if(active)
            {
                active = false;
@@ -77,10 +83,18 @@ function colors()
         colorSelect.style.height = "50px";
         colorSelect.style.width = "50px";
         colorSelect.addEventListener("click", () => {
-            selectedColor = colors[i];
+            selectedColor.style.opacity = "100%";
+            selectedColor = colorSelect;
             root.style.setProperty("--hoverColor", colors[i]);
+            colorSelect.style.opacity = "25%"
+            
         });
         colorSelect.setAttribute("class", "colors");
+        if(colors[i] == "black")
+        {
+            selectedColor = colorSelect;
+            colorSelect.style.opacity = "25%"
+        }
         buttonHolder.append(colorSelect);
     }
 }
