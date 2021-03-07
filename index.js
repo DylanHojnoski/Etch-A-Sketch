@@ -54,11 +54,11 @@ function gridSize()
 {
     width = prompt("Please enter the width of the grid max is 100");
     height = prompt("Please enter the heigth of the grid max is 100");
-    if(width > 100)
+    if(width > 100 || width ===  null || width == "")
     {
         width = 100;
     }
-    if(height > 100)
+    if(height > 100 || height === null || height == "")
     {
         height = 100;
     }
@@ -79,6 +79,7 @@ function colors()
             selectedColor = colors[i];
             root.style.setProperty("--hoverColor", colors[i]);
         });
+        colorSelect.setAttribute("class", "colors");
         buttonHolder.append(colorSelect);
     }
 }
@@ -90,7 +91,6 @@ function addClearGridButton()
     clearButton.textContent = "Clear Grid";
     clearButton.addEventListener("click", () => {
         clearGrid();
-        //gridSize();
         createGrid(width, height);
     });
     buttonHolder.append(clearButton);
