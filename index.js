@@ -9,6 +9,7 @@ const body = document.querySelector("body");
 body.addEventListener("load" , createGrid(width, height));
 body.addEventListener("load" , colors());
 body.addEventListener("load" , addClearGridButton());
+body.addEventListener("load" , addChangeGridButton());
 const container = document.getElementById("container");
 
 function createGrid(width, height)
@@ -18,35 +19,28 @@ function createGrid(width, height)
     {
         const container = document.getElementById("container");
         const div = document.createElement("div");
-        div.addEventListener("mousedown", () => {
-            active = true
-        });
         div.addEventListener("mouseover", () => {
             if(active)
             {
                 div.style.backgroundColor = selectedColor;
             }
         });
-        div.addEventListener("mouseup", () => {
-            active = false;
-        });
         div.addEventListener("click", () => {
-            active = true;
-            div.style.backgroundColor = selectedColor;
-            active = false;
+           if(active)
+           {
+               active = false;
+           }
+           else
+           {
+               active = true;
+           }
         });
+        
         div.setAttribute("style", "flex: 1 1 " + (100/width) + "%;");
 
         container.append(div);
     }
 }
-
-/*const clear = document.querySelector("button");
-clear.addEventListener("click", () => {
-    clearGrid();
-    gridSize();
-    createGrid(width, height);
-}); */
 
 function clearGrid() 
 {
@@ -96,11 +90,25 @@ function addClearGridButton()
     clearButton.textContent = "Clear Grid";
     clearButton.addEventListener("click", () => {
         clearGrid();
+        //gridSize();
+        createGrid(width, height);
+    });
+    buttonHolder.append(clearButton);
+}
+
+function addChangeGridButton()
+{
+    const buttonHolder = document.getElementById("buttonHolder");
+    const clearButton = document.createElement("button");
+    clearButton.textContent = "Change Grid";
+    clearButton.addEventListener("click", () => {
+        clearGrid();
         gridSize();
         createGrid(width, height);
     });
     buttonHolder.append(clearButton);
 }
+
 
  
 
