@@ -67,7 +67,7 @@ function gridSize()
 
 function colors()
 {
-    let colors = ["black", "white", "red", "blue", "green", "yellow", "orange"];
+    let colors = ["black", "white", "rgb(119, 71, 0)", "red", "blue", "green", "yellow", "orange"];
     for(let i = 0; i < colors.length; i++)
     {
         const buttonHolder = document.getElementById("buttonHolder");
