@@ -11,11 +11,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-button {
-    margin: 10px;
-    cursor: pointer;
+    height: 100vh;
+    width: 100vw;
 }
 
 #container {
@@ -25,7 +22,7 @@ button {
     width: 960px;
     justify-content: center;
     border: 1px solid black;
-    margin-top: 20px;
+    margin: 5px;
 }
 
 #container div {
@@ -35,10 +32,28 @@ button {
    margin: -.4px;
 }
 
-#buttonHolder {
+#buttonHolder, #colorHolder {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+button {
+    margin: 10px;
+    cursor: pointer;
+}
+
+#buttonHolder button {
+    border: 0px solid #000000;
+    border-radius: 3px;
+    padding: 10px;
+    background-color: #dddddd;
+}
+
+#buttonHolder button:hover {
+    outline: 2px solid #000000;
+    
 }
 
 .colors {
@@ -47,4 +62,24 @@ button {
 
 .colors:hover {
   opacity: 25%;
+}
+
+@media screen and (max-width: 1000px)
+{
+    body {
+        flex-direction: column;
+    }
+
+    #buttonHolder, #colorHolder {
+
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #container {
+        width: 99vw;
+        height: 99vw;
+        
+    }
 }

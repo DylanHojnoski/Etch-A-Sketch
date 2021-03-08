@@ -79,7 +79,7 @@ function colors()
     let colors = ["black", "white", "rgb(119, 71, 0)", "red", "blue", "green", "yellow", "orange"];
     for(let i = 0; i < colors.length; i++)
     {
-        const buttonHolder = document.getElementById("buttonHolder");
+        const colorHolder = document.getElementById("colorHolder");
         const colorSelect = document.createElement("button");
         colorSelect.style.backgroundColor = colors[i];
         colorSelect.style.borderRadius = "50%";
@@ -98,7 +98,7 @@ function colors()
             selectedColor = colorSelect;
             colorSelect.style.opacity = "25%"
         }
-        buttonHolder.append(colorSelect);
+        colorHolder.append(colorSelect);
     }
 }
 
