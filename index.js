@@ -44,8 +44,7 @@ function createGrid(width, height)
            {
                active = true;
            }
-        });
-        
+        }); 
         div.setAttribute("style", "flex: 1 1 " + (100/width) + "%;");
 
         container.append(div);
@@ -154,10 +153,9 @@ function screenShot(link)
         {
             link.click();
         }
+        else
+        {
+            download = false;
+        }
     });
 }
-
-
-
- 
-
