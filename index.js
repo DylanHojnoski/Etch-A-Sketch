@@ -26,12 +26,13 @@ function createGrid(width, height)
             if(active)
             {
                 div.style.backgroundColor = selectedColor.style.backgroundColor;
+                div.style.outline = "10px solid " + selectedColor.style.backgroundColor;
             }
-            div.style.outline = "4px solid #7c7b7b";
-            div.style.zIndex = "5";
+                div.style.outline = "4px solid #7c7b7b";
+                div.style.zIndex = "5";
         });
         div.addEventListener("mouseleave", () => {
-            div.style.outline = "1px solid #7c7b7b13";
+            div.style.outline = "1px solid #7c7b7b11";
             div.style.zIndex = "0";
         });
         div.addEventListener("click", () => {
@@ -46,7 +47,7 @@ function createGrid(width, height)
            }
         }); 
         div.setAttribute("style", "flex: 1 1 " + (100/width) + "%;");
-
+        div.setAttribute("class", "gridItem");
         container.append(div);
     }
 }
@@ -87,7 +88,7 @@ function colors()
         colorSelect.addEventListener("click", () => {
             selectedColor.style.opacity = "100%";
             selectedColor = colorSelect;
-            root.style.setProperty("--hoverColor", colors[i]);
+            //root.style.setProperty("--hoverColor", colors[i]);
             colorSelect.style.opacity = "25%"
             
         });
@@ -133,6 +134,7 @@ function addSaveButton()
     saveButton.textContent = "Save Drawing";
     saveButton.addEventListener("click", () => {
        screenShot(link);
+       active = false;
     });
     const link = document.createElement("a");
     link.setAttribute("download", "screenshot.png");
