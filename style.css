@@ -25,6 +25,7 @@ button {
     width: 960px;
     justify-content: center;
     border: 1px solid black;
+    margin-top: 20px;
 }
 
 #container div {

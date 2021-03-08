@@ -88,7 +88,7 @@ function colors()
         colorSelect.addEventListener("click", () => {
             selectedColor.style.opacity = "100%";
             selectedColor = colorSelect;
-            //root.style.setProperty("--hoverColor", colors[i]);
+            active = false;
             colorSelect.style.opacity = "25%"
             
         });
@@ -108,6 +108,7 @@ function addClearGridButton()
     const clearButton = document.createElement("button");
     clearButton.textContent = "Clear Grid";
     clearButton.addEventListener("click", () => {
+        active = false;
         clearGrid();
         createGrid(width, height);
     });
@@ -120,6 +121,7 @@ function addChangeGridButton()
     const clearButton = document.createElement("button");
     clearButton.textContent = "Change Grid";
     clearButton.addEventListener("click", () => {
+        active = false;
         clearGrid();
         gridSize();
         createGrid(width, height);
