@@ -1,15 +1,18 @@
+
 let width = 16;
 let height = 16;
 let active =false;
 let selectedColor;
 let divColor;
 let root = document.querySelector(":root");
+let download = false;
 
 const body = document.querySelector("body");
 body.addEventListener("load" , createGrid(width, height));
 body.addEventListener("load" , colors());
 body.addEventListener("load" , addClearGridButton());
 body.addEventListener("load" , addChangeGridButton());
+body.addEventListener("load" , addSaveButton());
 const container = document.getElementById("container");
 
 function createGrid(width, height)
@@ -123,6 +126,37 @@ function addChangeGridButton()
     });
     buttonHolder.append(clearButton);
 }
+
+function addSaveButton()
+{
+    const buttonHolder = document.getElementById("buttonHolder");
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save Drawing";
+    saveButton.addEventListener("click", () => {
+       screenShot(link);
+    });
+    const link = document.createElement("a");
+    link.setAttribute("download", "screenshot.png");
+    link.setAttribute("href", "#");
+    link.addEventListener("click", () => {
+        download = true;
+    });
+    saveButton.append(link);
+    buttonHolder.append(saveButton);
+}
+
+function screenShot(link)
+{
+    html2canvas(document.getElementById("container")).then(canvas => {
+        let url = canvas.toDataURL("image/png");
+        link.href = url;
+        if(!download)
+        {
+            link.click();
+        }
+    });
+}
+
 
 
  
