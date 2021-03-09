@@ -133,19 +133,23 @@ function addWidthAndHeightInput()
     const buttonHolder = document.getElementById("buttonHolder");
     const widthInput = document.createElement("input");
     widthInput.setAttribute("placeholder", "Width");
-    widthInput.setAttribute("type", "text");
+    widthInput.setAttribute("type", "number");
     widthInput.setAttribute("maxlength", "3");
+    widthInput.setAttribute("max", "100");
+    widthInput.setAttribute("min", "1");
     widthInput.addEventListener("change", () => {
-        width = widthInput.value;
+        width = Math.round(widthInput.value);
     });
     buttonHolder.append(widthInput);
 
     const heightInput = document.createElement("input");
     heightInput.setAttribute("placeholder", "Height");
-    heightInput.setAttribute("type", "text");
-    widthInput.setAttribute("maxlength", "3");
+    heightInput.setAttribute("type", "number");
+    heightInput.setAttribute("maxlength", "3");
+    heightInput.setAttribute("max", "100");
+    heightInput.setAttribute("min", "1");
     heightInput.addEventListener("change", () => {
-        height = heightInput.value;
+        height = Math.round(heightInput.value);
     });
     buttonHolder.append(heightInput);
 }
@@ -160,7 +164,7 @@ function addSaveButton()
        active = false;
     });
     const link = document.createElement("a");
-    link.setAttribute("download", "screenshot.png");
+    link.setAttribute("download", "drawing.png");
     link.setAttribute("href", "#");
     link.addEventListener("click", () => {
         download = true;
