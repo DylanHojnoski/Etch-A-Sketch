@@ -134,6 +134,7 @@ function addWidthAndHeightInput()
     const widthInput = document.createElement("input");
     widthInput.setAttribute("placeholder", "Width");
     widthInput.setAttribute("type", "text");
+    widthInput.setAttribute("maxlength", "3");
     widthInput.addEventListener("change", () => {
         width = widthInput.value;
     });
@@ -142,6 +143,7 @@ function addWidthAndHeightInput()
     const heightInput = document.createElement("input");
     heightInput.setAttribute("placeholder", "Height");
     heightInput.setAttribute("type", "text");
+    widthInput.setAttribute("maxlength", "3");
     heightInput.addEventListener("change", () => {
         height = heightInput.value;
     });
