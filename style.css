@@ -100,7 +100,7 @@ input:hover {
 @media screen and (max-width: 400px)
 {
     input {
-        flex-basis: 100%;
-        margin: 10px 100px;
+        flex-basis: 60%;
+        margin: 10px 50px;
     }
 }
