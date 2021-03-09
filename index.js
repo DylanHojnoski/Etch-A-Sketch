@@ -12,6 +12,7 @@ body.addEventListener("load" , createGrid(width, height));
 body.addEventListener("load" , colors());
 body.addEventListener("load" , addClearGridButton());
 body.addEventListener("load" , addChangeGridButton());
+body.addEventListener("load" , addWidthAndHeightInput());
 body.addEventListener("load" , addSaveButton());
 const container = document.getElementById("container");
 
@@ -62,8 +63,6 @@ function clearGrid()
 
 function gridSize()
 {
-    width = prompt("Please enter the width of the grid max is 100");
-    height = prompt("Please enter the heigth of the grid max is 100");
     if(width > 100 || width ===  null || width == "")
     {
         width = 100;
@@ -127,6 +126,26 @@ function addChangeGridButton()
         createGrid(width, height);
     });
     buttonHolder.append(clearButton);
+}
+
+function addWidthAndHeightInput()
+{
+    const buttonHolder = document.getElementById("buttonHolder");
+    const widthInput = document.createElement("input");
+    widthInput.setAttribute("placeholder", "Width");
+    widthInput.setAttribute("type", "text");
+    widthInput.addEventListener("change", () => {
+        width = widthInput.value;
+    });
+    buttonHolder.append(widthInput);
+
+    const heightInput = document.createElement("input");
+    heightInput.setAttribute("placeholder", "Height");
+    heightInput.setAttribute("type", "text");
+    heightInput.addEventListener("change", () => {
+        height = heightInput.value;
+    });
+    buttonHolder.append(heightInput);
 }
 
 function addSaveButton()

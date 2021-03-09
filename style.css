@@ -53,7 +53,7 @@ button {
 
 #buttonHolder button:hover {
     outline: 2px solid #000000;
-    outline-offset: -1px;
+    outline-offset: -2px;
 }
 
 .colors {
@@ -62,6 +62,19 @@ button {
 
 .colors:hover {
   opacity: 25%;
+}
+
+input {
+    width: 50px;
+    margin: 10px;
+    border-radius: 3px;
+    padding: 10px;
+    border-color: #dddddd;
+}
+
+input:hover {
+    outline: 2px solid #000000;
+    outline-offset: -3px;
 }
 
 @media screen and (max-width: 1000px)
@@ -81,5 +94,13 @@ button {
         width: 99vw;
         height: 99vw;
         
+    }
+}
+
+@media screen and (max-width: 400px)
+{
+    input {
+        flex-basis: 100%;
+        margin: 10px 100px;
     }
 }
